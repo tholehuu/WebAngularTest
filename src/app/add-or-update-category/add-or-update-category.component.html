@@ -1,0 +1,44 @@
+<!--<div>
+  <h2 *ngIf="!category || category.id === undefined">Add record</h2>
+  <h2 *ngIf="category.id !== undefined">Update record (ID:{{category.id}} )</h2>
+  <form>
+    <div *ngIf="category.id !== undefined" class="form-group">
+      <label for="id-input">ID:</label>
+      <input type="text" [(ngModel)]="category.id" name="id" id="id-input"   class="form-control" readonly/>
+    </div>
+    <div class="form-group">
+      <label for="name-input">Name:</label>
+      <input type="text" [(ngModel)]="category.name" (keydown.enter)="onKeyDown($event)"
+      name="name" id="name-input"   class="form-control"/>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="addOrUpdateCategoryRecord($event);">Save</button>
+  </form>
+</div>-->
+<div> 
+  <h2 *ngIf="!category || category.id === undefined" mat-dialog-title>Add record</h2>
+  <h2 *ngIf="category.id !== undefined" mat-dialog-title>Update record (ID:{{category.id}} )</h2>
+  <form>
+    <div mat-dialog-content>
+    <div *ngIf="category.id !== undefined" class="form-group">
+      <label for="id-input">ID:</label>
+      <mat-form-field>
+      <input type="text" [(ngModel)]="category.id" name="id" id="id-input"   class="form-control" readonly/>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <label for="name-input">Name:</label>
+      <mat-form-field>
+      <input type="text" [(ngModel)]="category.name" (keydown.enter)="onKeyDown($event)"
+      name="name" id="name-input"   class="form-control"/>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <div class="btn-toolbar">
+    <!--<button mat-button type="button"  class="btn btn-primary" (click)="addOrUpdateCategoryRecord($event);" >Save</button>-->
+    <button mat-button type="button" [mat-dialog-close]="category" class="btn btn-primary col-xs-2" >Save</button> <hr/>
+    <button mat-button (click)="onNoClick()" type="button" class="btn btn-primary col-xs-2" >No Thanks</button>
+    </div>
+  </div>
+  </form>
+</div>
