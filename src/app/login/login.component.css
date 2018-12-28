@@ -1,0 +1,13 @@
+.login{
+    margin-top:100px;
+    border-radius: 5px;
+}
+.LoginTitle{
+    background-color:orange;
+    text-align: center;
+    height: 45px;
+    border-radius: 5px;
+}
+.btnCancel{
+    margin-left:10px;
+}
