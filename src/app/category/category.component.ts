@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
 
   id:string;
   name: string;
+  index: string;
 
   constructor(public dialog: MatDialog) { }
   ngOnInit() {
@@ -29,12 +30,13 @@ export class CategoryComponent implements OnInit {
     this.recordDeleted.emit(record);
   }
 
-  public editRecord(record){
+  public editRecord(record,i){
     const cloneRecord = Object.assign({},record);
-    //console.log(record);
+    console.log(record);
     this.editClicked.emit(cloneRecord);
     this.id=cloneRecord.id;
     this.name=cloneRecord.name;
+    this.index=i+1;
     this.OpenDialog('350px','350px');
   }
   /**
@@ -45,7 +47,7 @@ export class CategoryComponent implements OnInit {
       {
         width: swidth,
         height: sheight,
-        data: { name: this.name, id: this.id}
+        data: { name: this.name, id: this.id, index:this.index}
       });
       dialogRef.afterClosed().subscribe(result => {
         //console.log("The dialog was closed");

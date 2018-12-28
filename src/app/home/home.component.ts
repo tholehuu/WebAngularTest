@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkoutService } from '../workout.service';
 import * as _ from 'lodash';
+import { UserService,AuthenticationService } from '../service';
+import { User } from '../models';
+import { first } from 'rxjs/operators';
 
 
 @Component({
@@ -11,9 +14,10 @@ import * as _ from 'lodash';
 export class HomeComponent implements OnInit {
   public categoryData: Array<any>;
   public currentCategory: any;
+  public users: User[] = [];
 
 
-  constructor(private workoutService: WorkoutService) {
+  constructor(private userService: UserService,private workoutService: WorkoutService) {
       this.currentCategory=this.setInitialValuesForCategoryData();
       workoutService.getAllCategory().subscribe((data:any) => this.categoryData=data);
       if(typeof this.categoryData=="undefined")
@@ -24,6 +28,10 @@ export class HomeComponent implements OnInit {
   }
    
   ngOnInit() {
+    /*this.userService.getAll().pipe(first()).subscribe(users => {
+      this.users=users;
+    });*/
+    this.userService.getAll();
   }
   
   private setInitialValuesForCategoryData(){
@@ -38,6 +46,7 @@ export class HomeComponent implements OnInit {
 
   private GetAllCategories(){
     this.workoutService.getAllCategory().subscribe((data:any) => this.categoryData=data);
+    
   }
 
   public createOrUpdateCategory = function(cate: any){

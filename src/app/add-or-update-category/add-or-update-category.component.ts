@@ -6,6 +6,7 @@ import { $ } from 'protractor';
 export interface DialogData{
   id: string;
   name: string;
+  index: string;
 }
 
 @Component({

@@ -1,3 +1,6 @@
+<div  class="container">
+    <h1> CATEGORY</h1>
+    <hr/>
 <div class="row">
     <div class="col-md-12">
         <app-category [categoryData]="categoryData" (editClicked)="editClicked($event)" (newClicked)="newClicked($event)" (recordDeleted)="deleteClicked($event)" (cateCreated)="createOrUpdateCategory($event)"></app-category>
@@ -5,4 +8,5 @@
      <!--<div class="col-md-4">
             <app-add-or-update-category (cateCreated)="createOrUpdateCategory($event)" [category]="currentCategory"></app-add-or-update-category>
     </div>-->
+</div>
 </div>

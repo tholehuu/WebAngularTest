@@ -16,14 +16,17 @@
 </div>-->
 <div> 
   <h2 *ngIf="!category || category.id === undefined" mat-dialog-title>Add record</h2>
-  <h2 *ngIf="category.id !== undefined" mat-dialog-title>Update record (ID:{{category.id}} )</h2>
+  <h2 *ngIf="category.id !== undefined" mat-dialog-title>Update record (ID:{{category.index}} )</h2>
   <form>
     <div mat-dialog-content>
     <div *ngIf="category.id !== undefined" class="form-group">
       <label for="id-input">ID:</label>
       <mat-form-field>
-      <input type="text" [(ngModel)]="category.id" name="id" id="id-input"   class="form-control" readonly/>
+      <input type="text" [(ngModel)]="category.id" name="id" id="id-input"   class="form-control" hidden/>
       </mat-form-field>
+      <mat-form-field>
+        <input type="text" [(ngModel)]="category.index" name="index" id="id-input"   class="form-control" readonly/>
+        </mat-form-field>
     </div>
     <div class="form-group">
       <label for="name-input">Name:</label>
