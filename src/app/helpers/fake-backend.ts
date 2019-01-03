@@ -4,17 +4,32 @@ HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 import { User } from '../models';
+import { WorkoutService } from '../workout.service';
 import { ok } from 'assert';
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
+    
     intercept(request: HttpRequest<any>, 
-        next: HttpHandler): Observable<HttpEvent<any>>{
-            const users: User[]=[
+        next: HttpHandler,): Observable<HttpEvent<any>>{
+            /*const users: User[]=[
                 { id: 1, username: 'test', 
                 password: 'test', firstName: 'Test',
                 lastName: 'User' }
-            ];
+            ];*/
+            let lsusers: any[]= JSON.parse(sessionStorage.getItem("users"))||[];
+            let users: User[]=[];
+            for(var i=0; i < lsusers.length;i++){
+                var u = lsusers[i];
+                var item: User={ 
+                    id: u.id,
+                    username: u.userName,
+                    password: u.password,
+                    firstName: u.firstName,
+                    lastName: u.lastName
+                 };
+                users.push(item);
+            };
             const authHeader = request.headers.get('Authorization');
             const isLoggedIn = authHeader && 
             authHeader.startsWith('Bearer fake-jwt-token');

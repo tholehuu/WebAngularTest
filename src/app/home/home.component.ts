@@ -5,7 +5,6 @@ import { UserService,AuthenticationService } from '../service';
 import { User } from '../models';
 import { first } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,17 +13,11 @@ import { first } from 'rxjs/operators';
 export class HomeComponent implements OnInit {
   public categoryData: Array<any>;
   public currentCategory: any;
-  public users: User[] = [];
 
 
   constructor(private userService: UserService,private workoutService: WorkoutService) {
       this.currentCategory=this.setInitialValuesForCategoryData();
       workoutService.getAllCategory().subscribe((data:any) => this.categoryData=data);
-      if(typeof this.categoryData=="undefined")
-      {
-        
-      }
-      
   }
    
   ngOnInit() {

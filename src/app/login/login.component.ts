@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from '../service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { WorkoutService } from '../workout.service';
+import { User } from '../models';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +17,17 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  public users: User[];
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
-  ) { }
+    private authenticationService: AuthenticationService,
+    private workoutService: WorkoutService
+  ) { 
+    workoutService.GetAllUsers().subscribe((data:any) => this.users=data);
+  }
 
   ngOnInit() {
     this.loginForm=this.formBuilder.group({
@@ -38,6 +44,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
+    sessionStorage.setItem("users",JSON.stringify(this.users));
     if(this.loginForm.invalid){
       console.log(this.loginForm.invalid);
       return;

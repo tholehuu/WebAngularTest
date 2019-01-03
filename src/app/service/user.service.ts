@@ -7,12 +7,12 @@ import  { User } from '../models';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+   
+   }
   
   getAll()
   {
-    console.log(this.http.get(`/users`));
-    console.log(this.http.get<User[]>(`/users`));
     return this.http.get<User[]>('/users');
   }
 }

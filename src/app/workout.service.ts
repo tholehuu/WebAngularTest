@@ -66,4 +66,8 @@ export class WorkoutService {
   {
     return this.http.delete(this.httpUrl+"DeleteCategory"+"/"+payload.id,{headers: this.headers});
   }
+
+  public GetAllUsers(){
+    return this.http.get(this.httpsUrl+"GetAllUser",{ headers: this.headers });
+  }
 }
