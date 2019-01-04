@@ -19,6 +19,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { LoginComponent } from './login/login.component';
 import { fakeBackEndProvider } from '../app/helpers';
 import { JwtInterceptor, ErrorInterceptor } from '../app/helpers';
+import { UserHomeComponent } from './user-home/user-home.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { JwtInterceptor, ErrorInterceptor } from '../app/helpers';
     HomeComponent,
     CategoryComponent,
     AddOrUpdateCategoryComponent,
-    LoginComponent
+    LoginComponent,
+    UserHomeComponent,
+    UserComponent
   ],schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     AlertModule.forRoot(),

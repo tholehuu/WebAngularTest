@@ -5,6 +5,8 @@ import { UserService,AuthenticationService } from '../service';
 import { User } from '../models';
 import { first } from 'rxjs/operators';
 
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,9 +17,12 @@ export class HomeComponent implements OnInit {
   public currentCategory: any;
 
 
-  constructor(private userService: UserService,private workoutService: WorkoutService) {
+  constructor(private userService: UserService,
+    private router: Router,
+    private workoutService: WorkoutService) {
       this.currentCategory=this.setInitialValuesForCategoryData();
       workoutService.getAllCategory().subscribe((data:any) => this.categoryData=data);
+     
   }
    
   ngOnInit() {
