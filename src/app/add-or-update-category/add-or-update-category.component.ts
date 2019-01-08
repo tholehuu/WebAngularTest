@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CategoryComponent } from '../category/category.component';
-import { $ } from 'protractor';
 
 export interface DialogData{
   id: string;

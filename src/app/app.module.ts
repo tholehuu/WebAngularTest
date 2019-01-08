@@ -21,6 +21,8 @@ import { fakeBackEndProvider } from '../app/helpers';
 import { JwtInterceptor, ErrorInterceptor } from '../app/helpers';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { UserComponent } from './user/user.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddOrUpdateUserComponent } from './add-or-update-user/add-or-update-user.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { UserComponent } from './user/user.component';
     AddOrUpdateCategoryComponent,
     LoginComponent,
     UserHomeComponent,
-    UserComponent
+    UserComponent,
+    DashboardComponent,
+    AddOrUpdateUserComponent
   ],schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     AlertModule.forRoot(),
@@ -58,7 +62,8 @@ import { UserComponent } from './user/user.component';
   bootstrap: [AppComponent],
   entryComponents: [
     CategoryComponent,
-    AddOrUpdateCategoryComponent
+    AddOrUpdateCategoryComponent,
+    AddOrUpdateUserComponent
   ]
 })
 export class AppModule { }

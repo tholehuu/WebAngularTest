@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { UserHomeComponent } from './user-home/user-home.component';
-
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login';
 import { AuthGuard } from './guards';
 
 const routes: Routes = [
-  { path:'', redirectTo: '',
+  { path:'', component:DashboardComponent,
+    canActivate: [AuthGuard],
     pathMatch: 'full'
   },
   { path:'category', component: HomeComponent,

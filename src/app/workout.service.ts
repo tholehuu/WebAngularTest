@@ -70,4 +70,16 @@ export class WorkoutService {
   public GetAllUsers(){
     return this.http.get(this.httpsUrl+"GetAllUser",{ headers: this.headers });
   }
+
+  public UpdateUser(payload){
+    return this.http.put(this.httpsUrl+"UpdateUser"+"/"+payload.id,payload,{ headers: this.headers });
+  }
+
+  public AddUser(payload){
+    return this.http.post(this.httpsUrl+"AddUser",payload,{ headers: this.headers });
+  }
+
+  public DeleteUser(payload){
+    return this.http.delete(this.httpsUrl+"DeleteUser"+"/"+payload.id,{ headers: this.headers });
+  }
 }

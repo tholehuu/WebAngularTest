@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   error = '';
+  currentUser =true;
   public users: User[];
 
   constructor(
@@ -56,6 +57,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
+          this.currentUser=false;
         },
         error => {
           this.error= error;

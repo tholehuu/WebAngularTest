@@ -1,0 +1,59 @@
+<div> 
+  <h2 *ngIf="!user || user.id === undefined" mat-dialog-title>Add record</h2>
+  <h2 *ngIf="user.id !== undefined" mat-dialog-title>Update record (ID:{{user.id}} )</h2>
+  <form>
+    <div mat-dialog-content>
+    <div *ngIf="user.id !== undefined" class="form-group row">
+      <label class="col-sm-4 col-form-label" for="id-input">ID:</label>
+      <mat-form-field>
+      <div class="col-sm-12">
+      <input type="text" [(ngModel)]="user.id" name="id" id="id-input"   class="form-control" />
+      </div>
+      </mat-form-field>
+    </div>
+    <div class="form-group row" >
+      <label class="col-sm-4 col-form-label" for="username-input">Username:</label>
+      <mat-form-field>
+      <div class="col-sm-12">
+      <input type="text" [(ngModel)]="user.username" (keydown.enter)="onKeyDown($event)"
+      name="username" id="username-input"   class="form-control"/>
+      </div>  
+    </mat-form-field>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="passsword-input">Password:</label>
+      <mat-form-field>
+      <div class="col-sm-12">
+      <input type="password" [(ngModel)]="user.password" (keydown.enter)="onKeyDown($event)"
+      name="password" id="password-input"   class="form-control"/>
+      </div>
+      </mat-form-field>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="firstName-input">Firstname:</label>
+      <mat-form-field>
+      <div class="col-sm-12">
+      <input type="text" [(ngModel)]="user.firstName" (keydown.enter)="onKeyDown($event)"
+      name="firstName" id="firstName-input"   class="form-control"/>
+      </div>
+      </mat-form-field>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-4 col-form-label" for="lastName-input">Lastname:</label>
+      <mat-form-field>
+      <div class="col-sm-12">  
+      <input type="text" [(ngModel)]="user.lastName" (keydown.enter)="onKeyDown($event)"
+      name="lastName" id="lastName-input"   class="form-control"/>
+      </div>
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <div class="btn-toolbar">
+    <!--<button mat-button type="button"  class="btn btn-primary" (click)="addOrUpdateCategoryRecord($event);" >Save</button>-->
+    <button mat-button type="button" [mat-dialog-close]="user" class="btn btn-primary col-xs-2" >Save</button> <hr/>
+    <button mat-button (click)="onNoClick()" type="button" class="btn btn-primary col-xs-2" >No Thanks</button>
+    </div>
+  </div>
+  </form>
+</div>

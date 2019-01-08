@@ -7,17 +7,21 @@
   <table class="table table-hover">
     <thead class="thead-dark">
       <th>ID</th>
-      <th>Name</th>
+      <th>UserName</th>
+      <th>FirstName</th>
+      <th>LastName</th>
       <th>Command</th>
     </thead>
     <tbody>
       <tr mdbTableCol  *ngFor="let user of userData | paginate: { itemsPerPage:itemsPage, currentPage:p} ">
         <td>{{ user.id }}</td>
         <td>{{ user.userName }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
         <td>
         <div class="btn-toolbar">
-         <a class="btn btn-info" (click)="editRecord(category,i)">Edit</a>
-         <a class="btn btn-danger" (click)="deleteRecord(category)">Delete</a> 
+         <a class="btn btn-info" (click)="editRecord(user)">Edit</a>
+         <a class="btn btn-danger" (click)="deleteRecord(user)">Delete</a> 
         </div>
         </td>
       </tr>
